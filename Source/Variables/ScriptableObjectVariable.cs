@@ -1,11 +1,11 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace UnityAtoms
 {
-    public abstract class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
+    public abstract partial class ScriptableObjectVariable<T, E1, E2> : ScriptableObjectVariableBase<T>,
         ISerializationCallbackReceiver, IVariableIcon
         where E1 : GameEvent<T>
         where E2 : GameEvent<T, T>
@@ -14,6 +14,9 @@ namespace UnityAtoms
 
         [SerializeField]
         private T _initialValue;
+
+        [SerializeField]
+        private bool _resetValueOnLevelStart;
 
         public T OldValue { get { return _oldValue; } }
 
@@ -29,8 +32,14 @@ namespace UnityAtoms
 
         private void OnEnable()
         {
+            SceneManager.sceneLoaded += ResetValue;
             if (Changed == null) return;
             Changed.Raise(Value);
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= ResetValue;
         }
 
         public bool SetValue(T newValue)
@@ -54,6 +63,11 @@ namespace UnityAtoms
 
         public void OnBeforeSerialize() { }
         public void OnAfterDeserialize() { _value = _initialValue; }
+
+        public void ResetValue()
+        {
+            SetValue(_initialValue);
+        }
 
         #region Observable
         public IObservable<T> ObserveChange()
@@ -80,5 +94,15 @@ namespace UnityAtoms
             );
         }
         #endregion // Observable
+
+        private void ResetValue(Scene scene, LoadSceneMode mode)
+        {
+            if (_resetValueOnLevelStart)
+            {
+                ResetValue();
+            }
+        }
+
+        static partial void DoStuffOnUpdate(ScriptableObjectVariable<T, E1, E2> self);
     }
 }
