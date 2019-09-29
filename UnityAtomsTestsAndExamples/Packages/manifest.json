@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "com.mambojambostudios.unity-atoms-src": "file:../../Source",
+        "com.captivereality.unity-atoms-src": "file:../../Source",
         "com.unity.package-manager-ui": "2.1.2",
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.audio": "1.0.0",

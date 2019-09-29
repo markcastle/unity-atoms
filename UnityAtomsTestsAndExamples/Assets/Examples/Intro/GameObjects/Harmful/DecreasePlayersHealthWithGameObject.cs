@@ -13,7 +13,7 @@ namespace UnityAtoms.Examples
 
         public override void Do(Collider2D collider, GameObject go)
         {
-            Debug.Log($"go.name={go.name}");
+           //  Debug.Log($"go.name={go.name}");
 
             if (collider.gameObject.HasTag(_tagPlayer))
             {
