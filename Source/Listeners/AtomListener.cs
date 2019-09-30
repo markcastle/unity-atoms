@@ -15,9 +15,11 @@ namespace UnityAtoms
 
         public E GameEvent { get { return _event; } set { _event = value; } }
 
+        // Workaround for https://github.com/AdamRamberg/unity-atoms/issues/54
+        // public UER _unityEventResponse = null; Needs to be public for this to work correctly in the inspector in Unity 2019.3.0b4 and above.
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER _unityEventResponse = null;
+        public UER _unityEventResponse = null;
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
@@ -56,9 +58,11 @@ namespace UnityAtoms
 
         public E GameEvent { get { return _event; } set { _event = value; } }
 
+        // Workaround for https://github.com/AdamRamberg/unity-atoms/issues/54
+        // public UER _unityEventResponse = null; Needs to be public for this to work correctly in the inspector in Unity 2019.3.0b4 and above.
         [FormerlySerializedAs("UnityEventResponse")]
         [SerializeField]
-        private UER _unityEventResponse;
+        public UER _unityEventResponse;
 
         [FormerlySerializedAs("GameActionResponses")]
         [SerializeField]
