@@ -575,6 +575,14 @@
         {
             "AssetPath": "Packages/com.captivereality.unity-atoms-src/Lists/Collider2DList.cs",
             "IconPath": "Packages/com.captivereality.unity-atoms-src/IconMap/atom-icon-orange.png"
+        },
+        {
+            "AssetPath": "Assets/Examples/Intro/GameObjects/Pickups/IncreasePlayersScoreWithGameObject.cs",
+            "IconPath": "Packages/com.captivereality.unity-atoms-src/IconMap/atom-icon-purple.png"
+        },
+        {
+            "AssetPath": "Assets/Examples/Intro/GameObjects/Pickups/ScoreChangedHandler.cs",
+            "IconPath": "Packages/com.captivereality.unity-atoms-src/IconMap/atom-icon-delicate.png"
         }
     ]
 }
