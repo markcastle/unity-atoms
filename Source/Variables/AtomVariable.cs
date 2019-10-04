@@ -33,6 +33,10 @@ namespace UnityAtoms
             Changed.Raise(Value);
         }
 
+        public void ResetValue()
+        {
+            SetValue(_initialValue);
+        }
         public bool SetValue(T newValue)
         {
             if (!AreEqual(_value, newValue))
